@@ -139,9 +139,7 @@
                 <div class="col-lg-12 col-md-16">
                     <div class="section-title wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.2s">
                         <h6 class="sub-title">About BharatCart</h6>
-                        <h4 class="title">Bharatcart is a platform wherein you can find all the local apps and products easily. Get all the Indian replacement of apps you are using in your mobile phone. <br>
-
-                            It's an initiative towards our Respected Prime Minister Shri Narendra Modi initiative of #vocalforlocal and #Aatmanirbharbharat.</h4>
+                        <h4 class="title">BharatCart is a start-up wherein we are working towards our Respected Prime Minister Shr. Narendra Modi’s motive of #VocalForLocal. We here provide you a search tool wherein you can search for all your required Indian apps and product.</h4>
                     </div> <!-- section title -->
                 </div>
             </div> <!-- row -->
@@ -168,30 +166,30 @@
                     <div class="contact-wrapper-form pt-115  wow fadeInUpBig" data-wow-duration="1s" data-wow-delay="0.5s">
                         <h4 class="contact-title pb-10"><i class="lni-envelope"></i> For any queries you can reach out us at</h4>
                         
-                        <form id="contact-form" action="https://script.google.com/macros/s/AKfycbz3fXQLuVQouD72s0IdWAhESUXWhQoNtj040L4KNIf3m_qI9axI/exec" method="post">
+                        <form id="contact-form"  method="POST">
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="contact-form mt-45">
                                         <label for="name">Enter Your Name</label>
-                                        <input id="name" name="name" type="text" placeholder="Full Name">
+                                        <input id="formname" name="name" type="text" placeholder="Full Name">
                                     </div> <!-- contact-form -->
                                 </div>
                                 <div class="col-md-6">
                                     <div class="contact-form mt-45">
                                         <label for="email">Enter Your Email</label>
-                                        <input id="email" type="email" name="email" placeholder="Email">
+                                        <input id="formemail" type="email" name="email" placeholder="Email">
                                     </div> <!-- contact-form -->
                                 </div>
                                 <div class="col-md-12">
                                     <div class="contact-form mt-45">
                                         <label for="message">Your Message</label>
-                                        <textarea id="message" name="message" placeholder="Enter your message..."></textarea>
+                                        <textarea id="formmessage" name="message" placeholder="Enter your message..."></textarea>
                                     </div> <!-- contact-form -->
                                 </div>
                                 <p class="form-message"></p>
                                 <div class="col-md-12">
                                     <div class="contact-form mt-45">
-                                        <button type="submit" class="main-btn">Send Now</button>
+                                        <button type="submit" class="main-btn" id="formsubmitbutton"><i class="fa fa-circle-o-notch fa-spin" id="formspinner"></i> Send Now</button>
                                     </div> <!-- contact-form -->
                                 </div>
                             </div> <!-- row -->
@@ -241,12 +239,53 @@
 
     <!--====== BACK TOP TOP PART ENDS ======-->  
 
-
-
-
     <!--====== Jquery js ======-->
     <script src="assets/js/vendor/jquery-1.12.4.min.js"></script>
     <script src="assets/js/vendor/modernizr-3.7.1.min.js"></script>
+    
+    <script>
+        $(document).ready(function() {
+            $('#formspinner').hide();
+            $('form').submit(function(event) {
+                event.preventDefault();
+                $('#formspinner').show();
+                var submitBtn=$('#formsubmitbutton');
+                submitBtn.attr("disabled",true);
+                submitBtn.html('<i class="fa fa-circle-o-notch fa-spin" id="formspinner"></i> Submitting');
+                //action="https://script.google.com/macros/s/AKfycbwxutQaTvbT5Ch9IxflSJheeUcG0ZOG98i0pPXngg/exec"
+                var form=$('#contact-form')[0];
+                var formData = new FormData();
+                formData.append('name',$("#formname").val());
+                formData.append('email',$("#formemail").val());
+                formData.append('message',$("#formmessage").val());
+                $.ajax({
+                    url: 'https://script.google.com/macros/s/AKfycbwxutQaTvbT5Ch9IxflSJheeUcG0ZOG98i0pPXngg/exec',
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    type: 'POST',
+                    success: function(data){
+                      if(data.result=="success")
+                      {
+                          alert("Form Submitted");
+                          form.reset();
+                          submitBtn.attr("disabled",false);
+                          submitBtn.html('<i class="fa fa-circle-o-notch fa-spin" id="formspinner"></i> Send Now');
+                          $('#formspinner').hide();
+                      }
+                      else{
+                          alert("Some Error Occured,Try After Sometime");
+                          form.reset();
+                          submitBtn.attr("disabled",false);
+                          submitBtn.html('<i class="fa fa-circle-o-notch fa-spin" id="formspinner"></i> Send Now');
+                          $('#formspinner').hide();;
+                      }
+                    }
+                });
+            })
+        });        
+    </script>
+
     
     <!--====== Bootstrap js ======-->
     <script src="assets/js/popper.min.js"></script>
