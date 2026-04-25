@@ -228,11 +228,11 @@ function StHero({ D, onJumpWork }) {
             <span style={{ color: "var(--fg-3)" }}>cell · readme · 04/26</span>
           </div>
           <h1 className="st-h1">
-            {D.role} shipping
+            {D.role} at the
             <br />
-            <span className="st-h1-accent">production GenAI</span> &amp;
+            <span className="st-h1-accent">intersection of</span>
             <br />
-            <span className="st-h1-accent">embedded ML.</span>
+            <span className="st-h1-accent">LLMs and robots.</span>
           </h1>
           <p className="st-hero-lede">
             I'm <strong>{D.name}</strong> — bridging enterprise integration and applied ML.
