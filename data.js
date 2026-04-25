@@ -1,0 +1,221 @@
+// Shared portfolio data — sourced from Rishabh's resume
+window.PORTFOLIO = {
+  name: "Rishabh Jain",
+  role: "AI Engineer",
+  location: "Dublin, Ireland",
+  email: "rishabh12j@gmail.com",
+  linkedin: "linkedin.com/in/rishabh12j",
+  site: "rishabhjain.framer.website",
+
+  tagline: "AI engineer building production GenAI systems — RAG, computer vision, and embedded LLMs.",
+
+  now: [
+    "Thesis: GrowMate — Transparent Voice-Robot Interaction through LLM-Constructed Behaviour Trees for Accessible Agricultural Robotics",
+    "Research Assistant at Maynooth University",
+    "Studying Embedded AI & Computer Vision",
+    "Open to AI/ML engineering roles — location-flexible",
+  ],
+
+  // External links (fill in once HF Spaces are published)
+  links: {
+    depthlens_hf: "https://huggingface.co/spaces/Rishabh12j/DepthLens",
+    geeknavi_demo: "https://huggingface.co/spaces/Rishabh12j/Teaching_Assistant_AI",
+    growmate_paper: "Interim Report.pdf", // research paper for thesis
+    growmate_repo: "#",
+  },
+
+  stats: [
+    { k: "years", v: "4+", note: "in production AI/integration" },
+    { k: "thesis_DBSR", v: "96.6%", note: "GrowMate behaviour-success rate" },
+    { k: "ocr_accuracy", v: "90%+", note: "semantic doc understanding, TCS" },
+    { k: "domains", v: "5", note: "robotics · healthcare · edtech · finance · marketplace" },
+  ],
+
+  experience: [
+    {
+      id: "maynooth",
+      company: "Maynooth University",
+      role: "Research Assistant",
+      period: "Apr 2026 — Present",
+      location: "Maynooth, Ireland",
+      tags: ["ros2", "llm", "edge", "speech"],
+      bullets: [
+        "Contributing to GrowMate, a voice-controlled assistant for FarmBot built on the AURA ROS2 stack — making agricultural robotics accessible to elderly and mobility-impaired users.",
+        "Designed a full voice-to-action pipeline: speech recognition → on-device LLM intent classification → behavior tree execution. Runs locally on edge hardware, no cloud dependency.",
+      ],
+    },
+    {
+      id: "infosys",
+      company: "Infosys Limited",
+      role: "Senior Associate Consultant",
+      period: "Jul 2024 — Sep 2025",
+      location: "Indore, India",
+      tags: ["recsys", "llm", "boomi", "loyalty"],
+      bullets: [
+        "Architected POC for an AI-powered Recommendation System inside a large loyalty redesign for an oil & gas client — hyper-personalized offers and marketing copy.",
+        "Solved the cold-start problem for new loyalty members by combining collaborative filtering with LLM-based contextual ranking.",
+        "Built data ingestion pipelines on Dell Boomi connecting legacy POS data to AI inference services, sub-second recommendation latency.",
+        "Accelerated project validation by 30% through rapid prototyping of auth and points-management modules.",
+      ],
+    },
+    {
+      id: "tcs-ai",
+      company: "Tata Consultancy Services",
+      role: "Systems Engineer — AI Engineer",
+      period: "Jan 2023 — Jul 2024",
+      location: "Mumbai, India",
+      tags: ["nlp", "ocr", "fuzzy-match", "automation"],
+      bullets: [
+        "Developed an invoice classification & routing system using rules-based logic with fuzzy matching for vendor validation — reduced manual processing 50%.",
+        "Replaced brittle template-based OCR with semantic document understanding; >90% accuracy across varying layouts without manual retraining.",
+        "Built intelligent routing that analyzed invoice intent and semantic content to direct documents to the right approver — overdue invoices down 35%, SLA compliance up.",
+      ],
+    },
+    {
+      id: "tcs-boomi",
+      company: "Tata Consultancy Services",
+      role: "Systems Engineer — Dell Boomi DevOps",
+      period: "Feb 2021 — Dec 2022",
+      location: "Mumbai, India",
+      tags: ["boomi", "integration", "devops"],
+      bullets: [
+        "Designed middleware integration interfaces using Dell Boomi and JavaScript across invoicing, payroll, warehousing, and inventory data for a leading life-sciences brand.",
+        "Hands-on with 10+ Boomi connectors (Disk, FTP, Mail, Salesforce, Web Services, SOAP, REST, SFTP) across Flat-file, XML, JSON.",
+        "Provided real-time production support and monitored the production environment.",
+      ],
+    },
+    {
+      id: "tezminds",
+      company: "TezMinds Software",
+      role: "Data Science Intern",
+      period: "Jan 2020 — Apr 2020",
+      location: "Pune, India",
+      tags: ["cnn", "deepfake", "tensorflow"],
+      bullets: [
+        "Proposed and built a Deep Fake video classifier in TensorFlow with custom CNN architecture.",
+        "Trained on a dataset of 100k+ videos, achieving competitive accuracy.",
+      ],
+    },
+  ],
+
+  projects: [
+    {
+      id: "growmate",
+      name: "GrowMate",
+      sub: "Transparent Voice-Robot Interaction via LLM-Constructed Behaviour Trees",
+      kind: "MSc Thesis · Robotics",
+      year: "2026",
+      tags: ["ros2", "edge-llm", "behaviour-trees", "gemma-3", "farmbot", "accessibility"],
+      featured: true,
+      thesis: true,
+      summary: "Voice-controlled assistant for FarmBot that classifies intent with an edge LLM and constructs inspectable behaviour trees from a typed node library. Designed for elderly and mobility-impaired users — every action is safety-checked and explainable, no cloud required.",
+      problem: "Existing voice-robot systems (ROSGPT, ROSA, RAI) treat the speech-to-command mapping as one opaque LLM call. There's no way to inspect why a command was chosen, validate intermediate steps, or compose robot actions with non-robot operations. For elderly users controlling a physical robot, that's a trust and safety problem.",
+      approach: [
+        "Hybrid pipeline: edge LLM (Gemma 3 4B via Ollama) classifies intent only — deterministic Python assembles the behaviour tree from a typed node library of 29 node types.",
+        "Per-node safety: workspace bounds checks, plant-existence verification via FarmBot REST API, and confirmation dialogs gate high-impact operations.",
+        "Multi-intent support: \"water the tomatoes and then go home\" produces a single tree with both sub-tasks.",
+        "Drop-in for the AURA FarmBot ROS2 stack — publishes to /keyboard_topic, no robot software changes needed.",
+      ],
+      results: [
+        { k: "DBSR", v: "96.6%", note: "desired-behaviour success on 29 utterances" },
+        { k: "SNSR", v: "98.8%", note: "single-node success across 164 executions" },
+        { k: "USC",  v: "0",     note: "unsafe states encountered" },
+        { k: "tree validity", v: "100%", note: "structural validity rate" },
+      ],
+      stack: ["ROS2 (AURA)", "Gemma 3 4B", "Ollama", "Behavior Trees", "Python", "FarmBot REST API"],
+      supervisor: "Dr Majid Sorouri",
+      institution: "Maynooth University · Dept. of Electronic Engineering",
+      sdg: ["SDG 2 — Zero Hunger", "SDG 10 — Reduced Inequalities"],
+    },
+    {
+      id: "depthlens",
+      name: "DepthLens",
+      sub: "Depth-Aware Scene Descriptor",
+      kind: "Assistive Vision",
+      year: "2025",
+      tags: ["VLM", "depth-anything-v2", "yolov8n", "huggingface"],
+      featured: true,
+      hasHF: true,
+      summary: "Real-time depth-aware scene description for visually impaired users. Augments a 1–3B VLM with metric spatial context from monocular depth + YOLOv8 detections, all on a consumer GPU.",
+      stack: ["PyTorch", "Depth Anything V2", "YOLOv8n", "1–3B VLM"],
+    },
+    {
+      id: "geeknavi",
+      name: "GEEKNAVI",
+      sub: "Lecture Summarizer",
+      kind: "EdTech · live demo",
+      year: "2024",
+      tags: ["whisper", "llm", "transcription", "live-demo"],
+      featured: true,
+      hasDemo: true,
+      summary: "Audio lectures → structured notes + auto-generated quizzes. OpenAI Whisper handles transcription; an LLM layer summarises and produces pedagogical reinforcement (flashcards + quizzes). Live demo available.",
+      problem: "Students spend hours re-watching lectures. Existing tools give you a transcript or a summary — not both, and never a study artefact you can actually quiz yourself with.",
+      approach: [
+        "Whisper transcription with timestamp alignment so summaries link back to source audio.",
+        "Hierarchical summarisation — section abstracts roll up into a lecture-level brief.",
+        "LLM-generated multiple-choice quizzes for each section, scored against the source for hallucination guardrails.",
+      ],
+      stack: ["OpenAI Whisper", "LLM", "Python", "Streamlit/Gradio"],
+    },
+    {
+      id: "medbot",
+      name: "MedBot",
+      sub: "Med-PaLM RAG Chatbot",
+      kind: "Healthcare AI",
+      year: "2024",
+      tags: ["RAG", "med-palm", "langchain", "vectordb"],
+      summary: "Healthcare advisory chatbot with Retrieval-Augmented Generation. Med-PaLM grounding reduces hallucinations and gives evidence-backed responses with passage-level citations.",
+      stack: ["LangChain", "Med-PaLM", "Vector DB", "Python"],
+    },
+    {
+      id: "deepfake",
+      name: "DeepFake Classifier",
+      sub: "AI-generated video detection",
+      kind: "Computer Vision",
+      year: "2020",
+      tags: ["cnn", "tensorflow", "100k-dataset"],
+      summary: "Custom CNN architecture for classifying AI-generated deepfake videos. Trained on a dataset of 100,000+ videos.",
+      stack: ["TensorFlow", "Keras", "OpenCV"],
+    },
+    {
+      id: "gather",
+      name: "Gather",
+      sub: "Service Marketplace MVP",
+      kind: "Product · No-Code",
+      year: "2023",
+      tags: ["bubble.io", "marketplace", "payments", "auth"],
+      summary: "Service marketplace MVP built and launched on Bubble.io with integrated payment gateways and user authentication. Onboarded 10+ vendors and facilitated 30+ service bookings during pilot — rapid prototyping and product management end-to-end.",
+      stack: ["Bubble.io", "Stripe", "Auth"],
+    },
+  ],
+
+  skills: {
+    "AI / ML": ["LLMs", "RAG", "Computer Vision", "NLP", "Transformers", "Embedded AI"],
+    "Frameworks": ["PyTorch", "TensorFlow", "LangChain", "Hugging Face", "Keras", "OpenCV"],
+    "Data": ["Pandas", "NumPy", "Scikit-learn", "Vector DBs"],
+    "Robotics / Systems": ["ROS2", "Behavior trees", "Edge inference", "Whisper"],
+    "Integration": ["Dell Boomi", "REST/SOAP", "ETL", "Salesforce"],
+  },
+
+  certifications: [
+    { name: "Generative-AI Cohort 1", by: "100xEngineers" },
+    { name: "Generative AI with Large Language Models", by: "DeepLearning.AI" },
+    { name: "Deep Learning Specialization", by: "DeepLearning.AI" },
+  ],
+
+  education: [
+    {
+      degree: "MSc — Robotics and Embedded AI",
+      school: "Maynooth University",
+      period: "2025 — Present",
+      location: "Maynooth, Ireland",
+      coursework: ["Deep Learning", "AI & Language Processing", "Computer Vision", "Embedded AI"],
+    },
+    {
+      degree: "B.Tech — Information Technology",
+      school: "Shri Vaishnav Vidyapeeth Vishwavidyalaya (SVIIT)",
+      period: "2016 — 2020",
+      location: "Indore, India",
+    },
+  ],
+};
