@@ -1034,4 +1034,19 @@
 
   /* footer */
   .st-footer { flex-wrap: wrap; gap: 6px; font-size: 10.5px; padding: 18px 0; }
+
+  /* hide the IDE-style bottom status bar — too dense for mobile */
+  .st-status { display: none; }
+
+  /* prevent long monospace strings (URLs, filenames) from forcing horizontal scroll */
+  *, *::before, *::after { box-sizing: border-box; }
+  .st-contact-row { min-width: 0; }
+  .st-contact-v, .st-contact-k { min-width: 0; overflow-wrap: anywhere; word-break: break-word; }
+  .st-contact-lede, .st-figure-summary, .st-card-summary { overflow-wrap: anywhere; }
+  .st-figure, .st-card, .st-doc, .st-hero, .st-contact { max-width: 100%; }
+  .st-h1 { overflow-wrap: anywhere; }
+
+  /* divider: right-side filename is hidden, ensure line doesn't bleed */
+  .st-divider { overflow: hidden; }
+  .st-divider-line { min-width: 0; }
 }

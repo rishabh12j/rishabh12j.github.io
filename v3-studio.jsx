@@ -686,10 +686,6 @@ function StContact({ D }) {
           <span className="st-contact-v">Rishabh_Jain_Resume_2026-04.pdf</span>
           <span className="mono st-contact-a">↗</span>
         </a>
-        <div className="st-contact-row st-contact-static">
-          <span className="mono st-contact-k">phone</span>
-          <span className="st-contact-v">{D.phone}</span>
-        </div>
       </div>
     </div>
   );
