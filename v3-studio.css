@@ -4,7 +4,8 @@
   display: flex;
   flex-direction: column;
   height: 100vh;
-  width: 100vw;
+  width: 100%;
+  max-width: 100vw;
   background: var(--bg);
   color: var(--fg);
   font-size: 13px;
@@ -1049,4 +1050,25 @@
   /* divider: right-side filename is hidden, ensure line doesn't bleed */
   .st-divider { overflow: hidden; }
   .st-divider-line { min-width: 0; }
+
+  /* GrowMate inline frame — collapse 4-col children to 2-col, allow node text to shrink */
+  .st-gm-children { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .st-gm-children > * { min-width: 0; }
+  .st-gm-node { white-space: normal; word-break: break-word; font-size: 10px; }
+  .st-gm-pipeline { font-size: 10px; }
+  .st-gm-stage { grid-template-columns: 60px 1fr; }
+  .st-gm-stage-v { white-space: normal; overflow-wrap: anywhere; }
+  .st-gm-frame, .st-gn-frame, .st-mb-frame, .st-dl-frame { max-width: 100%; }
+
+  /* GEEKNAVI waveform — let bars shrink so 48 fit */
+  .st-gn-wave { overflow: hidden; }
+  .st-gn-bar { min-width: 0; flex: 1 1 0; }
+
+  /* behaviour-tree SVG card */
+  .st-anim { max-width: 100%; }
+  .st-anim-svg { max-width: 100%; }
+
+  /* belt-and-braces: nothing in main scroll should exceed viewport */
+  .st-main, .st-doc, .st-figure, .st-figure-l, .st-figure-r, .st-hero-l, .st-hero-r { min-width: 0; max-width: 100%; }
+  .st-figure-img { overflow: hidden; }
 }
