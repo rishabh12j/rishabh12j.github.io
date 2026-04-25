@@ -52,7 +52,15 @@ function StudioPortfolio({ embedded = false }) {
 
   const jump = (id) => {
     const el = mainRef.current?.querySelector(`#sec-${id}`);
-    if (el) mainRef.current.scrollTo({ top: el.offsetTop - 12, behavior: "smooth" });
+    if (!el) return;
+    const main = mainRef.current;
+    const mainScrollable = main && main.scrollHeight > main.clientHeight + 1;
+    if (mainScrollable) {
+      main.scrollTo({ top: el.offsetTop - 12, behavior: "smooth" });
+    } else {
+      const top = el.getBoundingClientRect().top + window.scrollY - 12;
+      window.scrollTo({ top, behavior: "smooth" });
+    }
   };
 
   return (
