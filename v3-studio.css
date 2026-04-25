@@ -932,3 +932,106 @@
   .st-thesis-results-grid { grid-template-columns: 1fr 1fr; }
   .st-gm-children { grid-template-columns: repeat(2, 1fr); }
 }
+
+/* ============== mobile (≤ 768px) ============== */
+@media (max-width: 768px) {
+  /* let the page scroll naturally instead of a fixed-height shell */
+  html, body { overflow-x: hidden; }
+  .st-shell {
+    height: auto;
+    min-height: 100vh;
+    width: 100%;
+    overflow: visible;
+    font-size: 13px;
+  }
+  .st-body {
+    grid-template-columns: 1fr;
+    overflow: visible;
+    min-height: 0;
+  }
+  .st-main { overflow: visible; }
+
+  /* hide the IDE sidebar — file-tree metaphor doesn't scale to phones */
+  .st-sidebar { display: none; }
+
+  /* compress the top chrome */
+  .st-chrome {
+    grid-template-columns: auto 1fr auto;
+    height: 34px;
+    padding: 0 10px;
+    font-size: 10.5px;
+    gap: 6px;
+  }
+  .st-chrome-c { display: none; }
+  .st-chrome-r { gap: 5px; }
+  .st-chrome-r > :nth-child(n+4) { display: none; } /* hide Mumbai pair, keep Dublin */
+  .st-chrome-title { display: none; }
+
+  /* tab bar — keep but tighten */
+  .st-tabbar { height: 28px; }
+  .st-tab { padding: 0 10px; font-size: 11px; }
+
+  /* content padding shrinks */
+  .st-doc { padding: 0 14px 60px; }
+
+  /* hero stack */
+  .st-hero { padding: 18px 0 8px; }
+  .st-hero-grid { grid-template-columns: 1fr; gap: 22px; }
+  .st-h1 { font-size: 30px; line-height: 1.15; }
+  .st-hero-lede { font-size: 13px; }
+  .st-hero-cta { flex-wrap: wrap; gap: 8px; }
+  .st-meta-row { flex-wrap: wrap; }
+
+  /* dividers — keep readable but allow wrapping */
+  .st-divider { padding: 28px 0 14px; gap: 10px; flex-wrap: wrap; }
+  .st-divider-f { display: none; }
+
+  /* featured figures: stack image over text */
+  .st-figure { padding: 14px; }
+  .st-figure-grid { grid-template-columns: 1fr; gap: 18px; }
+  .st-figure-title { font-size: 22px; }
+  .st-figure-summary { font-size: 13px; }
+  .st-figure-yr { display: none; }
+
+  /* DepthLens demo frame — keep visual but constrain */
+  .st-dl-frame { aspect-ratio: 16 / 10; }
+  .st-dl-cap { font-size: 10px; }
+
+  /* GEEKNAVI waveform tightens */
+  .st-gn-wave { height: 56px; }
+
+  /* other-projects grid: single column */
+  .st-grid { grid-template-columns: 1fr; gap: 14px; }
+
+  /* experience rows: drop the location column on mobile */
+  .st-exp-thead, .st-exp-summary {
+    grid-template-columns: 90px 1fr auto;
+    gap: 8px;
+    font-size: 11.5px;
+  }
+  .st-exp-thead > :nth-child(3),
+  .st-exp-summary > :nth-child(3),
+  .st-exp-thead > :nth-child(5),
+  .st-exp-summary > :nth-child(5) { display: none; }
+  .st-exp-detail { padding-left: 12px; }
+
+  /* skills + education: single column */
+  .st-se { grid-template-columns: 1fr; gap: 22px; }
+
+  /* contact: single column, comfortable tap targets */
+  .st-contact { grid-template-columns: 1fr; gap: 22px; }
+  .st-contact-row { grid-template-columns: 70px 1fr 20px; padding: 12px 10px; font-size: 13px; }
+
+  /* hide the floating tweaks panel on mobile — too cramped, low value */
+  .twk-panel { display: none !important; }
+
+  /* CTA button row wrap */
+  .st-cta-row { flex-wrap: wrap; gap: 8px; }
+  .st-link-btn, .st-demo-link { font-size: 12px; }
+
+  /* tighten the behaviour-tree animation card */
+  .st-anim { padding: 12px 12px 8px; }
+
+  /* footer */
+  .st-footer { flex-wrap: wrap; gap: 6px; font-size: 10.5px; padding: 18px 0; }
+}
