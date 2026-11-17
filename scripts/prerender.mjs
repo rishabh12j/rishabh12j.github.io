@@ -63,7 +63,7 @@ const noscript = `<noscript><section class="st-noscript" aria-label="Project cas
 
 // ---- 3. Head metadata for previews and search ----
 const siteUrl = `https://${D.site}/`;
-const description = D.summary.split(". ").slice(0, 2).join(". ").replace(/\.?$/, ".");
+const description = D.summary.split(". ")[0].replace(/\.?$/, "."); // first sentence: previews truncate around 155 chars
 const sameAs = [D.linkedin, D.github].filter(Boolean).map((u) => (u.startsWith("http") ? u : `https://${u}`));
 const jsonLd = {
   "@context": "https://schema.org",
