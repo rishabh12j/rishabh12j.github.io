@@ -80,7 +80,6 @@ function StudioPortfolio({ embedded = false }) {
             <StDivider label="§ 05" title="contact" file="contact.sh" />
             <section id="sec-contact"><StContact D={D} /></section>
 
-            <StFooter D={D} />
           </div>
         </main>
       </div>
@@ -741,17 +740,6 @@ function StContact({ D }) {
   );
 }
 
-function StFooter({ D }) {
-  return (
-    <footer className="st-footer mono">
-      <span>© 2026 {D.name}</span>
-      <span style={{ color: "var(--fg-3)" }}>·</span>
-      <span>built in Indore</span>
-      <span style={{ color: "var(--fg-3)" }}>·</span>
-      <span>last commit · oct 2026</span>
-    </footer>
-  );
-}
 
 // ----- Status bar -----
 function StStatusBar({ D, active }) {
